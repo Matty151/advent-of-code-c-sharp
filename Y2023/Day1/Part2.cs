@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace AdventOfCode.Day1;
+namespace AdventOfCode.Y2023.Day1;
 
 public class Part2
 {
@@ -10,7 +10,7 @@ public class Part2
 
         List<int> calibrationValues = new();
 
-        foreach (string line in File.ReadLines(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "../../../Day1/input/part2/puzzle.txt"))) {
+        foreach (string line in File.ReadLines(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "../../../Y2023/Day1/input/part2/puzzle.txt"))) {
             List<string> matches = regex.Matches(line)
                 .Select(match => match.Value != string.Empty ? match.Value : match.Groups[1].ToString())
                 .ToList();
@@ -21,9 +21,6 @@ public class Part2
 
             int first = ParseNumber(matches[0]);
             int number = int.Parse($"{first}{(matches.Count > 1 ? ParseNumber(matches.Last()) : first)}");
-
-            Console.WriteLine($"Line: {line}");
-            Console.WriteLine($"Number: {number}");
 
             calibrationValues.Add(number);
         }
