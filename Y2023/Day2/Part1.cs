@@ -2,7 +2,7 @@
 
 public class Part1
 {
-    public static void run()
+    public static void Run()
     {
         string[] lines = TextFileReader.ReadLines(2, 1, "puzzle");
 
