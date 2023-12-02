@@ -1,3 +1,3 @@
-﻿using AdventOfCode.Y2023.Day1;
+﻿using AdventOfCode.Y2023.Day2;
 
-Part2.Run();
+Part1.run();
