@@ -12,9 +12,9 @@ public class Part1
             { Color.Blue, 14 },
         });
 
-        List<Game> games = lines.Select(line => Game.CreateFromString(bag, line)).ToList();
+        List<Game> games = lines.Select(Game.CreateFromString).ToList();
 
-        List<Game> possibleGames = games.Where(game => game.IsPossible()).ToList();
+        List<Game> possibleGames = games.Where(game => game.IsPossible(bag)).ToList();
 
         Console.WriteLine(possibleGames.Select(game => game.Id).Sum());
     }

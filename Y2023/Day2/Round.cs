@@ -4,7 +4,7 @@ public class Round
 {
     public List<Cube> Cubes { get; }
 
-    private Dictionary<Color, int> CubeQuantities { get; }
+    public Dictionary<Color, int> CubeQuantities { get; }
 
     public Round(List<Cube> cubes)
     {

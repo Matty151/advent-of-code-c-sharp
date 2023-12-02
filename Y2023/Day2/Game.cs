@@ -4,20 +4,17 @@ namespace AdventOfCode.Y2023.Day2;
 
 public class Game
 {
-    public Bag Bag { get; }
-
     public int Id { get; }
 
     public List<Round> Rounds { get; }
 
-    public Game(Bag bag, int id, List<Round> rounds)
+    public Game(int id, List<Round> rounds)
     {
-        Bag = bag;
         Id = id;
         Rounds = rounds;
     }
 
-    public static Game CreateFromString(Bag bag, string input)
+    public static Game CreateFromString(string input)
     {
         Regex gameRegex = new(@"^Game (?<id>\d+):");
 
@@ -47,17 +44,27 @@ public class Game
             rounds.Add(new Round(curRoundCubes));
         }
 
-        return new Game(bag, gameId, rounds);
+        return new Game(gameId, rounds);
     }
 
-    public bool IsPossible()
+    public bool IsPossible(Bag bag)
     {
-        return Rounds.Count == GetPossibleRounds().Count;
+        return Rounds.Count == Rounds.Count(round => round.IsPossible(bag));
     }
 
-    public List<Round> GetPossibleRounds()
+    public Dictionary<Color, int> GetMinimum()
     {
-        return Rounds.Where(round => round.IsPossible(Bag)).ToList();
+        Dictionary<Color, int> minimums = new();
+
+        foreach (Round round in Rounds) {
+            foreach (KeyValuePair<Color, int> cubeQuantity in round.CubeQuantities) {
+                if (!minimums.ContainsKey(cubeQuantity.Key) || cubeQuantity.Value > minimums[cubeQuantity.Key]) {
+                    minimums[cubeQuantity.Key] = cubeQuantity.Value;
+                }
+            }
+        }
+
+        return minimums;
     }
 
     public override string ToString()
