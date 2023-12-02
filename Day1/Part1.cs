@@ -10,7 +10,7 @@ public class Part1
 
         List<int> calibrationValues = new();
 
-        foreach (string line in File.ReadLines(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "../../../Day1/input/puzzle.txt"))) {
+        foreach (string line in File.ReadLines(Path.Join(AppDomain.CurrentDomain.BaseDirectory, "../../../Day1/input/part1/puzzle.txt"))) {
             MatchCollection digits = regex.Matches(line);
 
             if (digits.Count == 0) {
