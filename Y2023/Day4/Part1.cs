@@ -8,7 +8,7 @@ public class Part1
 
         double total = lines
             .Select(Card.CreateFromString)
-            .Select(card => card.GetPoints())
+            .Select(card => card.Points)
             .Sum();
 
         Console.WriteLine(total);

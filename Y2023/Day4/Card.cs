@@ -4,7 +4,11 @@ namespace AdventOfCode.Y2023.Day4;
 
 public class Card
 {
-    private int Number;
+    public int Number;
+
+    public int[] MatchingNumbers => Numbers.Intersect(WinningNumbers).ToArray();
+
+    public double Points => MatchingNumbers.Length > 0 ? Math.Pow(2, MatchingNumbers.Length - 1) : 0;
 
     private int[] WinningNumbers { get; }
 
@@ -33,16 +37,5 @@ public class Card
             winningNumbers.Select(match => int.Parse(match.Value)).ToArray(),
             numbers.Select(match => int.Parse(match.Value)).ToArray()
         );
-    }
-
-    public double GetPoints()
-    {
-        int[] matchingNumbers = Numbers.Intersect(WinningNumbers).ToArray();
-
-        if (matchingNumbers.Length == 0) {
-            return 0;
-        }
-
-        return Math.Pow(2, matchingNumbers.Length - 1);
     }
 }
