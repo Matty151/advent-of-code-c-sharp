@@ -16,7 +16,10 @@ public class Part2
         foreach (KeyValuePair<int, int> cardCopy in cardCopies) {
             for (int j = 0; j < cardCopy.Value; j++) {
                 for (int i = 1; i <= cards[cardCopy.Key].MatchingNumbers.Length; i++) {
-                    // TODO: Check if in bounds.
+                    if (!cardCopies.ContainsKey(cardCopy.Key + 1)) {
+                        break;
+                    }
+
                     cardCopies[cardCopy.Key + i] += 1;
                 }
             }
