@@ -6,6 +6,17 @@ public class Part1
     {
         string[] lines = TextFileReader.ReadLines(2024, 1, 1, "puzzle");
 
+        (List<int> left, List<int> right) = ParseLines(lines);
+
+        int result = left.Order()
+            .Zip(right.Order(), (l, r) => Math.Abs(l - r))
+            .Sum();
+
+        Console.WriteLine(result);
+    }
+
+    private static (List<int>, List<int>) ParseLines(string[] lines)
+    {
         List<int> left = [];
         List<int> right = [];
 
@@ -18,13 +29,6 @@ public class Part1
             right.Add(numbers[1]);
         }
 
-        left.Sort();
-        right.Sort();
-
-        int result = left.Zip(right, (l, r) => (l, r))
-            .Select((tuple, _) => Math.Abs(tuple.l - tuple.r))
-            .Sum();
-
-        Console.WriteLine(result);
+        return (left, right);
     }
 }

@@ -6,6 +6,15 @@ public class Part2
     {
         string[] lines = TextFileReader.ReadLines(2024, 1, 2, "puzzle");
 
+        (List<int> left, List<int> right) = ParseLines(lines);
+
+        int result = left.Sum(l => l * right.Count(r => r == l));
+
+        Console.WriteLine(result);
+    }
+
+    private static (List<int>, List<int>) ParseLines(string[] lines)
+    {
         List<int> left = [];
         List<int> right = [];
 
@@ -18,9 +27,6 @@ public class Part2
             right.Add(numbers[1]);
         }
 
-        int result = left.Select(l => (l, count: right.Count(r => r == l)))
-            .Sum(tuple => tuple.l * tuple.count);
-
-        Console.WriteLine(result);
+        return (left, right);
     }
 }
