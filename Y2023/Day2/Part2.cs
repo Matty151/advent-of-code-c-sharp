@@ -4,7 +4,7 @@ public class Part2
 {
     public static void Run()
     {
-        string[] lines = TextFileReader.ReadLines(2, 2, "puzzle");
+        string[] lines = TextFileReader.ReadLines(2023, 2, 2, "puzzle");
 
         List<Game> games = lines.Select(Game.CreateFromString).ToList();
 

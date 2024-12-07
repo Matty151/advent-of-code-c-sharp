@@ -4,7 +4,7 @@ public class Part1
 {
     public static void Run()
     {
-        string[] lines = TextFileReader.ReadLines(2, 1, "puzzle");
+        string[] lines = TextFileReader.ReadLines(2023, 2, 1, "puzzle");
 
         Bag bag = new(new Dictionary<Color, int> {
             { Color.Red, 12 },

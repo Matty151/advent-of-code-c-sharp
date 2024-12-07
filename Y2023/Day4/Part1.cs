@@ -4,7 +4,7 @@ public class Part1
 {
     public static void Run()
     {
-        string[] lines = TextFileReader.ReadLines(4, 1, "puzzle");
+        string[] lines = TextFileReader.ReadLines(2023, 4, 1, "puzzle");
 
         double total = lines
             .Select(Card.CreateFromString)

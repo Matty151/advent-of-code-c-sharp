@@ -4,7 +4,7 @@ public class Part1
 {
     public static void Run()
     {
-        string[] lines = TextFileReader.ReadLines(3, 1, "test");
+        string[] lines = TextFileReader.ReadLines(2023, 3, 1, "test");
 
         char[,] schematic = BuildSchematic(lines);
 
