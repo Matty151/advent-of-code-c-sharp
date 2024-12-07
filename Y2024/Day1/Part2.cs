@@ -1,10 +1,10 @@
 namespace AdventOfCode.Y2024.Day1;
 
-public class Part1
+public class Part2
 {
     public static void Run()
     {
-        string[] lines = TextFileReader.ReadLines(2024, 1, 1, "puzzle");
+        string[] lines = TextFileReader.ReadLines(2024, 1, 2, "puzzle");
 
         List<int> left = [];
         List<int> right = [];
@@ -18,12 +18,8 @@ public class Part1
             right.Add(numbers[1]);
         }
 
-        left.Sort();
-        right.Sort();
-
-        int result = left.Zip(right, (l, r) => (l, r))
-            .Select((tuple, _) => Math.Abs(tuple.l - tuple.r))
-            .Sum();
+        int result = left.Select(l => (l, count: right.Count(r => r == l)))
+            .Sum(tuple => tuple.l * tuple.count);
 
         Console.WriteLine(result);
     }
